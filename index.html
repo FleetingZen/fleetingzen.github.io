@@ -1,11 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome to FleetingZen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fleeting Zen offers timeless wisdom for a chaotic world. Watch powerful videos blending ancient philosophy, modern psychology, and emotional storytelling to help you live with clarity, purpose, and peace.">
+  <title>Fleeting Zen | Timeless Wisdom for a Chaotic World</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f0f;
+      color: #f5f5f5;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
 </head>
-<body>
-  <h1>Welcome 👋</h1>
-  <p>This is Rob’s first GitHub Pages site. Simple, fast, free.</p>
+<body class="bg-black text-white">
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
+    <div>
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-tight">Fleeting Zen</h1>
+      <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">Timeless wisdom, ancient philosophy, and powerful psychology — crafted into 2-minute videos to help you face the chaos of modern life with clarity and calm.</p>
+      <a href="#videos" class="mt-8 inline-block px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition">Watch Now</a>
+    </div>
+  </section>
+
+  <!-- Featured Video Section -->
+  <section id="videos" class="py-16 px-6 bg-gray-900">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">Latest Episode</h2>
+      <div class="aspect-w-16 aspect-h-9">
+        <iframe class="w-full h-96 rounded-lg shadow-lg" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <p class="mt-6 text-lg text-gray-400">Explore how ancient Stoic and Zen insights can help you transform pain into purpose, silence the noise, and rediscover meaning in a distracted world.</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 px-6 bg-black border-t border-gray-800">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Why Fleeting Zen?</h2>
+      <p class="text-lg text-gray-400">We’re drowning in information, but starving for wisdom. Fleeting Zen helps you slow down, think deeper, and live more intentionally — not with trends or hacks, but with clarity born from thousands of years of human insight.</p>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="py-16 px-6 bg-gray-900 text-center">
+    <h2 class="text-3xl font-bold mb-4">Get the Wisdom in Your Inbox</h2>
+    <p class="text-gray-400 mb-6">No spam. Just timeless insights to help you live better.</p>
+    <form action="#" method="POST" class="max-w-xl mx-auto flex flex-col md:flex-row items-center gap-4">
+      <input type="email" name="email" placeholder="Your email" class="w-full px-4 py-3 rounded-full text-black" required>
+      <button type="submit" class="px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-black text-center border-t border-gray-800 text-gray-500 text-sm">
+    <p>&copy; 2025 Fleeting Zen. All rights reserved.</p>
+  </footer>
 </body>
 </html>
