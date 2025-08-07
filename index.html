@@ -21,6 +21,9 @@
     .highlight {
       color: #f97316;
     }
+    .custom-aspect-ratio {
+      aspect-ratio: 21 / 9;
+    }
   </style>
 </head>
 <body class="bg-black text-white">
@@ -37,8 +40,8 @@
   <section id="videos" class="py-16 px-6 bg-black">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-4xl text-center mb-10">Featured Videos</h2>
-      <div class="aspect-w-16 aspect-h-9">
-        <iframe class="w-full h-96 rounded-lg shadow" src="https://www.youtube.com/embed/videoseries?list=PLosampjqMj3HzNT3nF9bwdEb7eoJxM_Ot&modestbranding=1&rel=0" frameborder="0" allowfullscreen title="Fleeting Zen Playlist"></iframe>
+      <div class="custom-aspect-ratio w-full">
+        <iframe class="w-full h-full rounded-lg shadow" src="https://www.youtube.com/embed/videoseries?list=PLosampjqMj3HzNT3nF9bwdEb7eoJxM_Ot&modestbranding=1&rel=0" frameborder="0" allowfullscreen title="Fleeting Zen Playlist"></iframe>
       </div>
       <div class="flex justify-center mt-10">
         <a href="https://www.youtube.com/watch?v=axGL_FRlVig&list=PLosampjqMj3HzNT3nF9bwdEb7eoJxM_Ot" target="_blank" rel="noopener">
