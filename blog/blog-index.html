@@ -1,87 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fleeting Zen | Blog</title>
-  <link rel="stylesheet" href="/styles.css"> <!-- Link to your main site CSS -->
-  <style>
-    body {
-      margin: 0;
-      font-family: "EB Garamond", serif;
-      background-color: #000;
-      color: #fff;
+  <meta name="description" content="Fleeting Zen blog — essays and guides on timeless wisdom for modern life." />
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'] }
+        }
+      }
     }
-    header {
-      text-align: center;
-      background: url('/images/FZ_Banner_2.png') center/cover no-repeat;
-      padding: 60px 20px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    }
-    header p {
-      font-style: italic;
-      font-size: 1.2rem;
-      margin: 10px 0 0;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-    }
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-    .post {
-      border-bottom: 1px solid #333;
-      padding: 20px 0;
-    }
-    .post:last-child {
-      border-bottom: none;
-    }
-    .post h2 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-    .post a {
-      text-decoration: none;
-      color: #f97316; /* orange accent */
-    }
-    .post a:hover {
-      text-decoration: underline;
-    }
-    .post .date {
-      font-size: 0.9rem;
-      color: #aaa;
-      margin-top: 5px;
-    }
-    .post p {
-      margin-top: 10px;
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #ccc;
-    }
-  </style>
+  </script>
 </head>
-<body>
+<body class="bg-black text-gray-200 font-sans">
 
-<header>
-  <h1>Fleeting Zen</h1>
-  <p>Timeless Wisdom for Modern Life</p>
-</header>
-
-<main>
-  <h2>Blog</h2>
-
-  <div class="post">
-    <h2><a href="/blog/carl-jung-modern-anxiety.html">Carl Jung’s Cure for Modern Anxiety</a></h2>
-    <div class="date">August 2025</div>
-    <p>A practical guide to shadow work, individuation, and finding meaning in a world overloaded with noise.</p>
+  <!-- Banner (single image, no text overlay) -->
+  <div class="w-full border-b border-neutral-800 bg-black">
+    <img src="/images/FZ_Banner_2.png" alt="Fleeting Zen — Timeless Wisdom for Modern Life" class="w-full h-auto block">
   </div>
 
-  <!-- Add new posts below this section -->
-</main>
+  <!-- Top utility nav -->
+  <div class="max-w-5xl mx-auto px-6 pt-4">
+    <a href="/" class="text-orange-400 hover:text-orange-300 underline">&larr; Back to Home</a>
+  </div>
 
+  <main class="max-w-5xl mx-auto px-6 py-10">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">Blog</h1>
+      <p class="text-gray-400 mt-1">New posts publish alongside video premieres.</p>
+    </header>
+
+    <!-- Posts list -->
+    <section class="space-y-6">
+      <!-- Post card -->
+      <article class="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 hover:bg-neutral-900/80 transition">
+        <div class="flex items-center gap-3 text-xs uppercase tracking-wider text-orange-300/90 mb-2">
+          <span class="inline-block h-2 w-2 rounded-full bg-orange-400"></span>
+          Deep Dive
+          <span class="text-gray-500">•</span>
+          <time datetime="2025-08-01" class="text-gray-400 normal-case">August 2025</time>
+        </div>
+        <h2 class="text-2xl font-semibold leading-snug">
+          <a href="/blog/carl-jung-modern-anxiety.html" class="hover:text-orange-300">
+            Carl Jung’s Cure for Modern Anxiety
+          </a>
+        </h2>
+        <p class="text-gray-300 mt-2">
+          A practical guide to shadow work, individuation, and finding meaning in a world overloaded with noise.
+        </p>
+        <div class="mt-4">
+          <a href="/blog/carl-jung-modern-anxiety.html" class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 underline">
+            Read post
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.172 7l-1.414 1.414L14.343 11H6v2h8.343l-2.585 2.586L13.172 17 18 12.172 13.172 7z"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Duplicate this <article> block for future posts -->
+      <!--
+      <article class="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 hover:bg-neutral-900/80 transition">
+        <div class="flex items-center gap-3 text-xs uppercase tracking-wider text-orange-300/90 mb-2">
+          <span class="inline-block h-2 w-2 rounded-full bg-orange-400"></span>
+          Category
+          <span class="text-gray-500">•</span>
+          <time datetime="YYYY-MM-DD" class="text-gray-400 normal-case">Month YYYY</time>
+        </div>
+        <h2 class="text-2xl font-semibold leading-snug">
+          <a href="/blog/your-post-slug.html" class="hover:text-orange-300">Your Post Title</a>
+        </h2>
+        <p class="text-gray-300 mt-2">Short description for the teaser card.</p>
+        <div class="mt-4">
+          <a href="/blog/your-post-slug.html" class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 underline">
+            Read post
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.172 7l-1.414 1.414L14.343 11H6v2h8.343l-2.585 2.586L13.172 17 18 12.172 13.172 7z"/></svg>
+          </a>
+        </div>
+      </article>
+      -->
+    </section>
+
+    <!-- Spacer -->
+    <div class="h-12"></div>
+  </main>
+
+  <footer class="bg-black border-t border-neutral-800 py-6 text-center text-gray-500 text-sm">
+    &copy; 2025 Fleeting Zen. All rights reserved.
+  </footer>
 </body>
 </html>
