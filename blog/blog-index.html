@@ -43,11 +43,15 @@
     <section class="space-y-6">
       <!-- Post card -->
       <article class="rounded-2xl border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-900/80 transition overflow-hidden">
-        <a href="/blog/carl-jung-modern-anxiety.html" class="block">
-          <img src="/blog/blog-images/Jung2.png" 
-               alt="Carl Jung portrait" 
-               class="w-full h-56 object-cover">
+        <a href="/blog/carl-jung-modern-anxiety.html" class="block relative">
+          <img
+            src="/blog/blog-images/Jung2.png"
+            alt="Carl Jung portrait"
+            class="w-full h-72 md:h-80 lg:h-96 object-cover [object-position:50%_38%]" />
+          <!-- subtle dark gradient for visual balance -->
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/0 via-black/10 to-black/35"></div>
         </a>
+
         <div class="p-6">
           <div class="flex items-center gap-3 text-xs uppercase tracking-wider text-orange-300/90 mb-2">
             <span class="inline-block h-2 w-2 rounded-full bg-orange-400"></span>
