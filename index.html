@@ -93,6 +93,34 @@
     </div>
   </section>
 
+  <!-- Podcast Section -->
+  <section id="podcast" class="py-16 px-6 bg-gray-900">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl text-center mb-8">Podcast</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <!-- Spotify Show Embed (always works, shows newest first) -->
+        <div class="w-full">
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/4DsHyTwzNTexst0qWcx2zv?utm_source=generator" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Fleeting Zen Podcast on Spotify"></iframe>
+        </div>
+
+        <!-- Latest Episode Card populated from RSS -->
+        <div id="latest-episode" class="bg-black border border-gray-800 rounded-lg p-6 shadow">
+          <h3 class="text-2xl mb-2">Latest Episode</h3>
+          <p class="text-gray-400 mb-4">Loading the latest episode details...</p>
+        </div>
+      </div>
+
+      <!-- Platform Buttons -->
+      <div class="flex flex-wrap gap-3 justify-center mt-10">
+        <a href="https://podcasts.apple.com/us/podcast/fleeting-zen/id1833725188" target="_blank" rel="noopener" class="bg-white text-black font-semibold py-2 px-4 rounded-full hover:opacity-90 transition">Apple Podcasts</a>
+        <a href="https://pca.st/nhf7qopm" target="_blank" rel="noopener" class="bg-red-600 text-white font-semibold py-2 px-4 rounded-full hover:bg-red-700 transition">Pocket Casts</a>
+        <a href="https://open.spotify.com/show/4DsHyTwzNTexst0qWcx2zv" target="_blank" rel="noopener" class="bg-green-600 text-white font-semibold py-2 px-4 rounded-full hover:bg-green-700 transition">Spotify</a>
+        <a href="https://anchor.fm/s/10830edb0/podcast/rss" target="_blank" rel="noopener" class="bg-orange-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-orange-600 transition">RSS</a>
+      </div>
+    </div>
+  </section>
+
   <!-- T-Shirt Promo -->
   <section class="py-16 px-6 bg-gray-900 text-center">
     <h2 class="text-3xl mb-4">Memento Mori / Amor Fati T-Shirt</h2>
@@ -180,5 +208,68 @@
   <footer class="py-8 bg-black text-center border-t border-gray-800 text-gray-500 text-sm">
     <p>&copy; 2025 Fleeting Zen. All rights reserved.</p>
   </footer>
+
+  <!-- RSS loader for Latest Episode -->
+  <script>
+    (function() {
+      const rssUrl = "https://anchor.fm/s/10830edb0/podcast/rss";
+      const target = document.getElementById("latest-episode");
+      if (!target) return;
+
+      function setFallback() {
+        target.innerHTML = `
+          <h3 class="text-2xl mb-2">Latest Episode</h3>
+          <p class="text-gray-300">Explore the newest episode in the Spotify player or follow on your favorite app above.</p>
+        `;
+      }
+
+      function truncate(str, n) {
+        if (!str) return "";
+        const s = str.replace(/<[^>]*>/g, "").trim();
+        return s.length > n ? s.slice(0, n - 3) + "..." : s;
+      }
+
+      function render(item) {
+        const title = item.querySelector("title")?.textContent || "Untitled";
+        const link = item.querySelector("link")?.textContent || "#";
+        const pub = item.querySelector("pubDate")?.textContent || "";
+        const desc = item.querySelector("description")?.textContent || "";
+        const enclosure = item.querySelector("enclosure");
+        const audio = enclosure ? enclosure.getAttribute("url") : null;
+
+        target.innerHTML = `
+          <h3 class="text-2xl mb-2">${title}</h3>
+          ${pub ? `<p class="text-gray-400 text-sm mb-3">${new Date(pub).toLocaleDateString()}</p>` : ""}
+          <p class="text-gray-300 mb-4">${truncate(desc, 260)}</p>
+          ${audio ? `<audio controls class="w-full mb-4"><source src="${audio}" type="audio/mpeg">Your browser does not support the audio element.</audio>` : ""}
+          <a href="${link}" target="_blank" rel="noopener" class="inline-block bg-orange-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-orange-600 transition">Listen now</a>
+        `;
+      }
+
+      function parseAndRender(xmlText) {
+        const xml = new window.DOMParser().parseFromString(xmlText, "application/xml");
+        const firstItem = xml.querySelector("channel > item");
+        if (!firstItem) { setFallback(); return; }
+        render(firstItem);
+      }
+
+      // Try direct fetch first, then fall back to a permissive proxy if needed
+      fetch(rssUrl)
+        .then(res => {
+          if (!res.ok) throw new Error("RSS fetch failed");
+          return res.text();
+        })
+        .then(parseAndRender)
+        .catch(() => {
+          fetch("https://api.allorigins.win/raw?url=" + encodeURIComponent(rssUrl))
+            .then(res => {
+              if (!res.ok) throw new Error("Proxy fetch failed");
+              return res.text();
+            })
+            .then(parseAndRender)
+            .catch(setFallback);
+        });
+    })();
+  </script>
 </body>
 </html>
