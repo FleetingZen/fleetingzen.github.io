@@ -1,275 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2SNPMETNH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-K2SNPMETNH');
-</script>
-
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fleeting Zen offers timeless wisdom for a chaotic world. Powerful videos, articles, and merchandise to help you live with purpose, peace, and clarity.">
+  <meta name="description" content="Fleeting Zen — Timeless wisdom for a chaotic world.">
   <title>Fleeting Zen | Timeless Wisdom for Modern Life</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'EB Garamond', serif;
-      background-color: #0f0f0f;
-      color: #fefae0;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0a0a;
+      --fg:       #e8e4d9;
+      --muted:    #9a9585;
+      --accent:   #d4a24e;
     }
-    h1, h2, h3 { font-weight: 700; }
-    .highlight { color: #f97316; }
-    iframe.aspect-video { aspect-ratio: 16 / 9; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .45;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(10,10,10,.3) 0%, rgba(10,10,10,.15) 40%, rgba(10,10,10,.85) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      max-width: 640px;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      letter-spacing: .04em;
+      line-height: 1.1;
+      color: #fff;
+    }
+
+    .hero-sub {
+      margin-top: 1rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: var(--muted);
+      letter-spacing: .03em;
+    }
+
+    .divider {
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: var(--accent);
+      margin: 2.5rem auto 0;
+      opacity: .6;
+    }
+
+    /* ── Middle section ── */
+    .mid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6rem 1.5rem;
+      text-align: center;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,162,78,.06), transparent);
+    }
+
+    .mid-img {
+      width: min(220px, 50vw);
+      opacity: .75;
+      margin-bottom: 3rem;
+    }
+
+    .mid h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 600;
+      max-width: 520px;
+      line-height: 1.35;
+    }
+
+    .mid p {
+      margin-top: 1.5rem;
+      font-size: 1.15rem;
+      max-width: 480px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── Banner strip ── */
+    .banner-strip {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .banner-strip img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      opacity: .5;
+      display: block;
+    }
+
+    /* ── Bottom section ── */
+    .bottom {
+      padding: 5rem 1.5rem 6rem;
+      text-align: center;
+    }
+
+    .bottom p {
+      font-size: 1.15rem;
+      max-width: 500px;
+      margin: 0 auto;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .bottom .accent-text {
+      display: block;
+      margin-top: 2.5rem;
+      font-size: 1.35rem;
+      color: var(--accent);
+      letter-spacing: .05em;
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: .85rem;
+      color: var(--muted);
+      opacity: .5;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    /* ── Fade-in on scroll ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
-<body class="bg-black text-white">
-  <!-- Hero Banner -->
-  <section class="relative w-full h-48 md:h-80 overflow-hidden">
-    <img src="images/tree-no-words-shorter.png" alt="Fleeting Zen Banner" class="w-full h-full object-cover">
-    <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center bg-black bg-opacity-60">
-      <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">Fleeting Zen</h1>
-      <p class="text-xl italic text-white">Timeless Wisdom for Modern Life</p>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="images/tree-no-words-shorter.png" alt="" class="hero-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Fleeting Zen</h1>
+      <p class="hero-sub">Timeless Wisdom for Modern Life</p>
+      <span class="divider"></span>
     </div>
   </section>
 
-  <!-- Featured YouTube Videos -->
-  <section id="videos" class="py-16 px-6 bg-black">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl text-center mb-10">Featured Videos</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        
-        <!-- 1) Carl Jung’s Cure for Modern Anxiety -->
-        <div class="w-full flex flex-col">
-          <!-- Invisible spacer to align with 'Premiering Soon!' on the right -->
-          <p class="text-center text-yellow-400 font-bold mb-2 invisible">Spacer</p>
-          <iframe class="w-full aspect-video rounded-lg shadow" src="https://www.youtube.com/embed/PDKVdP2geS0?modestbranding=1&rel=0" frameborder="0" allowfullscreen title="Carl Jung’s Cure for Modern Anxiety"></iframe>
-          <p class="mt-2 text-center text-lg font-semibold">Carl Jung’s Cure for Modern Anxiety</p>
-          <p class="mt-1 text-center"><a class="text-orange-400 underline" href="https://drive.google.com/file/d/1sW5iyiih__BVRxLdVTs4BQPc91ipQlhT/view?usp=sharing" target="_blank">Download Worksheet</a></p>
-        </div>
-
-        <!-- 2) Amor Fati: Love Your Fate, Even When Life Breaks You -->
-        <div class="w-full flex flex-col">
-          <p class="text-center text-yellow-400 font-bold mb-2">Premiering Soon!</p>
-          <iframe class="w-full aspect-video rounded-lg shadow" src="https://www.youtube.com/embed/WnGfjx_CsIo?modestbranding=1&rel=0" frameborder="0" allowfullscreen title="Amor Fati: Love Your Fate, Even When Life Breaks You"></iframe>
-          <p class="mt-2 text-center text-lg font-semibold">Amor Fati: Love Your Fate, Even When Life Breaks You</p>
-          <p class="mt-1 text-center"><a class="text-orange-400 underline" href="https://drive.google.com/file/d/16Ge-aGje9KPP0N-U9inOxpqg0Dft6FpN/view?usp=sharing" target="_blank">Download Worksheet</a></p>
-        </div>
-
-        <!-- 3) You Are Going to Die. Here’s How Memento Mori Can Set You Free -->
-        <!--
-        <div class="w-full">
-          <iframe class="w-full aspect-video rounded-lg shadow" src="https://www.youtube.com/embed/ULrm04ICHqI?modestbranding=1&rel=0" frameborder="0" allowfullscreen title="You Are Going to Die. Here’s How Memento Mori Can Set You Free"></iframe>
-          <p class="mt-2 text-center text-lg font-semibold">You Are Going to Die. Here’s How Memento Mori Can Set You Free</p>
-          <p class="mt-1 text-center"><a class="text-orange-400 underline" href="https://drive.google.com/file/d/1cMmxLaYRlaUwm9uIGtNNnzWeNe-SHbq9/view?usp=sharing" target="_blank">Download Worksheet</a></p>
-        </div>
-        -->
-
-        <!-- 4) Silence Your Mind Instantly: A Tool to Stop Overthinking -->
-        <!--
-        <div class="w-full">
-          <iframe class="w-full aspect-video rounded-lg shadow" src="https://www.youtube.com/embed/b6RAYBTFSnk?modestbranding=1&rel=0" frameborder="0" allowfullscreen title="Silence Your Mind Instantly: A Tool to Stop Overthinking"></iframe>
-          <p class="mt-2 text-center text-lg font-semibold">Silence Your Mind Instantly: A Tool to Stop Overthinking</p>
-          <p class="mt-1 text-center"><a class="text-orange-400 underline" href="https://drive.google.com/file/d/1gWsSjr9ddIqdBH2oVzCCl8eNxfh1EBM0/view?usp=sharing" target="_blank">Download Worksheet</a></p>
-        </div>
-        -->
-
-        <!-- 5) Hedonic Adaptation: Why Success Feels Empty and the Ancient Cure That Works -->
-        <!--
-        <div class="w-full">
-          <iframe class="w-full aspect-video rounded-lg shadow" src="https://www.youtube.com/embed/-_UWOCUTL0s?modestbranding=1&rel=0" frameborder="0" allowfullscreen title="Hedonic Adaptation: Why Success Feels Empty and the Ancient Cure That Works"></iframe>
-          <p class="mt-2 text-center text-lg font-semibold">Hedonic Adaptation: Why Success Feels Empty and the Ancient Cure That Works</p>
-          <p class="mt-1 text-center"><a class="text-orange-400 underline" href="https://drive.google.com/file/d/1G1FLVKAhsiNPhY17jgmbId9IqxnR3tPk/view?usp=sharing" target="_blank">Download Worksheet</a></p>
-        </div>
-        -->
-
-      </div>
-    </div>
+  <!-- Middle -->
+  <section class="mid">
+    <img src="images/meditating-figure.png" alt="Meditation" class="mid-img reveal">
+    <h2 class="reveal">Still the noise.<br>Find what remains.</h2>
+    <p class="reveal">Ancient philosophy, modern practice — tools for living with clarity, purpose, and peace.</p>
   </section>
 
-  <!-- Podcast Section -->
-  <section id="podcast" class="py-16 px-6 bg-gray-900">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl text-center mb-8">Podcast</h2>
+  <!-- Banner strip -->
+  <div class="banner-strip">
+    <img src="images/FZ_Banner_2.png" alt="">
+  </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <!-- Spotify Show Embed (always works, shows newest first) -->
-        <div class="w-full">
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/4DsHyTwzNTexst0qWcx2zv?utm_source=generator" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Fleeting Zen Podcast on Spotify"></iframe>
-        </div>
-
-        <!-- Latest Episode Card populated from RSS -->
-        <div id="latest-episode" class="bg-black border border-gray-800 rounded-lg p-6 shadow">
-          <h3 class="text-2xl mb-2">Latest Episode</h3>
-          <p class="text-gray-400 mb-4">Loading the latest episode details...</p>
-        </div>
-      </div>
-
-      <!-- Platform Buttons -->
-      <div class="flex flex-wrap gap-3 justify-center mt-10">
-        <a href="https://podcasts.apple.com/us/podcast/fleeting-zen/id1833725188" target="_blank" rel="noopener" class="bg-white text-black font-semibold py-2 px-4 rounded-full hover:opacity-90 transition">Apple Podcasts</a>
-        <a href="https://pca.st/nhf7qopm" target="_blank" rel="noopener" class="bg-red-600 text-white font-semibold py-2 px-4 rounded-full hover:bg-red-700 transition">Pocket Casts</a>
-        <a href="https://open.spotify.com/show/4DsHyTwzNTexst0qWcx2zv" target="_blank" rel="noopener" class="bg-green-600 text-white font-semibold py-2 px-4 rounded-full hover:bg-green-700 transition">Spotify</a>
-        <a href="https://anchor.fm/s/10830edb0/podcast/rss" target="_blank" rel="noopener" class="bg-orange-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-orange-600 transition">RSS</a>
-      </div>
-    </div>
+  <!-- Bottom -->
+  <section class="bottom">
+    <p class="reveal">More is coming. Until then, sit with the silence.</p>
+    <span class="accent-text reveal">— Memento Mori —</span>
   </section>
 
-  <!-- T-Shirt Promo -->
-  <section class="py-16 px-6 bg-gray-900 text-center">
-    <h2 class="text-3xl mb-4">Memento Mori / Amor Fati T-Shirt</h2>
-    <p class="text-lg text-gray-400 mb-6">A daily reminder to embrace life exactly as it is.</p>
-    <div class="mb-10 flex flex-col md:flex-col items-center justify-center gap-8">
-      <a href="https://www.etsy.com/listing/1887754756/memento-mori-amor-fati-shirt-yin-yang?ref=shop_home_active_1&logging_key=d18e575ace742bc3b6cc999705979b19cba43a1a%3A1887754756" target="_blank" rel="noopener">
-        <img src="images/fleetingzen-shirt-promo-clickable.png" alt="Memento Mori Amor Fati T-Shirt - Click to Buy on Etsy" title="Click to buy this T-Shirt on Etsy" class="w-full md:w-80 lg:w-96 rounded shadow transform hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
-      </a>
-      <div class="w-full max-w-2xl">
-        <iframe class="w-full max-w-xl aspect-video h-80 md:h-96 rounded shadow-lg mx-auto" src="https://www.youtube.com/embed/ZalxpGsLzkI?start=0&modestbranding=1&rel=0" frameborder="0" allowfullscreen title="Fleeting Zen Commercial"></iframe>
-      </div>
-    </div>
-    <a href="https://www.etsy.com/listing/1887754756/memento-mori-amor-fati-shirt-yin-yang?ref=shop_home_active_1&logging_key=d18e575ace742bc3b6cc999705979b19cba43a1a%3A1887754756" class="inline-block bg-orange-500 text-white text-xl font-extrabold py-4 px-10 rounded-full shadow-lg hover:bg-orange-600 transform hover:scale-105 transition duration-300 ease-in-out">🛒 Buy the T-Shirt on Etsy</a>
-  </section>
+  <footer>&copy; 2025 Fleeting Zen. All rights reserved.</footer>
 
-  <!-- Blog Section -->
-  <section id="blog" class="py-16 px-6 bg-gray-900 text-center">
-    <h2 class="text-3xl font-bold mb-6">Latest from the Blog</h2>
-    <div class="max-w-3xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h3 class="text-2xl font-semibold text-orange-400 mb-2">Carl Jung’s Cure for Modern Anxiety</h3>
-      <p class="text-gray-300 mb-4">
-        A practical guide to shadow work, individuation, and meaning. Learn how Jung’s timeless wisdom
-        can help you face your shadow, discover your authentic self, and find meaning in modern life.
-      </p>
-      <a href="https://fleetingzen.com/blog/carl-jung-modern-anxiety.html" class="inline-block bg-orange-500 text-white font-semibold py-3 px-6 rounded-full hover:bg-orange-600 transition">
-        Read the Full Post
-      </a>
-    </div>
-  </section>
-
-  <!-- Affiliate Products -->
-  <section id="products" class="py-16 px-6 bg-gray-900">
-    <h2 class="text-3xl text-center mb-6">Recommended Tools for the Journey</h2>
-    <p class="text-center text-gray-400 text-sm mb-10">
-      As an Amazon Associate, we earn from qualifying purchases. These hand-picked tools align with our mission to support mindful, intentional living.
-    </p>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      
-      <!-- Life Calendar -->
-      <div class="bg-black border border-gray-800 p-4 rounded text-center">
-        <a href="https://amzn.to/3UiVzlu" target="_blank">
-          <img src="images/4000_week_calendar.png" alt="Life Calendar Poster" class="mx-auto mb-4 rounded shadow-lg" width="300" />
-        </a>
-        <h3 class="text-xl mb-2">Life Calendar – 4000 Weeks Poster</h3>
-        <a href="https://amzn.to/3UiVzlu" class="text-orange-400 underline" target="_blank">View on Amazon</a>
-      </div>
-
-      <!-- Memento Mori Coin -->
-      <div class="bg-black border border-gray-800 p-4 rounded text-center">
-        <a href="https://amzn.to/41zRgGn" target="_blank">
-          <img src="images/Memento_Mori_Coin.png" alt="Memento Mori Coin" class="mx-auto mb-4 rounded shadow-lg" width="300" />
-        </a>
-        <h3 class="text-xl mb-2">Memento Mori Coin – Stoic Reminder</h3>
-        <a href="https://amzn.to/41zRgGn" class="text-orange-400 underline" target="_blank">View on Amazon</a>
-      </div>
-
-      <!-- Meditation Cushion -->
-      <div class="bg-black border border-gray-800 p-4 rounded text-center">
-        <a href="https://amzn.to/3Hfy0qU" target="_blank">
-          <img src="images/Meditation_Cushion.png" alt="Meditation Cushion & Zabuton Set" class="mx-auto mb-4 rounded shadow-lg" width="300" />
-        </a>
-        <h3 class="text-xl mb-2">Meditation Cushion & Zabuton Set</h3>
-        <a href="https://amzn.to/3Hfy0qU" class="text-orange-400 underline" target="_blank">View on Amazon</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Resources Section -->
-  <section id="resources" class="py-16 px-6 bg-black">
-    <div class="resource-box max-w-3xl mx-auto">
-      <h2 class="text-3xl mb-6 text-center">Free Resources</h2>
-      <p class="text-gray-400 text-left mb-8">Downloadable worksheets to help you practice what you learn. Hosted via Google Drive and free to use. Once opened, click the download icon to save to your device. You can then print it out if desired for personal use.</p>
-      <ul class="text-left text-gray-300 space-y-2">
-        <li><strong>Silence Your Mind Instantly</strong>: <a href="https://drive.google.com/file/d/1gWsSjr9ddIqdBH2oVzCCl8eNxfh1EBM0/view?usp=sharing" class="text-orange-400 underline" target="_blank">Open PDF</a></li>
-        <li><strong>Hedonic Adaptation</strong>: <a href="https://drive.google.com/file/d/1G1FLVKAhsiNPhY17jgmbId9IqxnR3tPk/view?usp=sharing" class="text-orange-400 underline" target="_blank">Open PDF</a></li>
-        <li><strong>You Are Going to Die (Memento Mori)</strong>: <a href="https://drive.google.com/file/d/1cMmxLaYRlaUwm9uIGtNNnzWeNe-SHbq9/view?usp=sharing" class="text-orange-400 underline" target="_blank">Open PDF</a></li>
-        <li><strong>Amor Fati</strong>: <a href="https://drive.google.com/file/d/16Ge-aGje9KPP0N-U9inOxpqg0Dft6FpN/view?usp=sharing" class="text-orange-400 underline" target="_blank">Open PDF</a></li>
-        <li><strong>Carl Jung’s Cure for Modern Anxiety</strong>: <a href="https://drive.google.com/file/d/1sW5iyiih__BVRxLdVTs4BQPc91ipQlhT/view?usp=sharing" class="text-orange-400 underline" target="_blank">Open PDF</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 bg-black text-center border-t border-gray-800 text-gray-500 text-sm">
-    <p>&copy; 2025 Fleeting Zen. All rights reserved.</p>
-  </footer>
-
-  <!-- RSS loader for Latest Episode -->
   <script>
-    (function() {
-      const rssUrl = "https://anchor.fm/s/10830edb0/podcast/rss";
-      const target = document.getElementById("latest-episode");
-      if (!target) return;
-
-      function setFallback() {
-        target.innerHTML = `
-          <h3 class="text-2xl mb-2">Latest Episode</h3>
-          <p class="text-gray-300">Explore the newest episode in the Spotify player or follow on your favorite app above.</p>
-        `;
-      }
-
-      function truncate(str, n) {
-        if (!str) return "";
-        const s = str.replace(/<[^>]*>/g, "").trim();
-        return s.length > n ? s.slice(0, n - 3) + "..." : s;
-      }
-
-      function render(item) {
-        const title = item.querySelector("title")?.textContent || "Untitled";
-        const link = item.querySelector("link")?.textContent || "#";
-        const pub = item.querySelector("pubDate")?.textContent || "";
-        const desc = item.querySelector("description")?.textContent || "";
-        const enclosure = item.querySelector("enclosure");
-        const audio = enclosure ? enclosure.getAttribute("url") : null;
-
-        target.innerHTML = `
-          <h3 class="text-2xl mb-2">${title}</h3>
-          ${pub ? `<p class="text-gray-400 text-sm mb-3">${new Date(pub).toLocaleDateString()}</p>` : ""}
-          <p class="text-gray-300 mb-4">${truncate(desc, 260)}</p>
-          ${audio ? `<audio controls class="w-full mb-4"><source src="${audio}" type="audio/mpeg">Your browser does not support the audio element.</audio>` : ""}
-          <a href="${link}" target="_blank" rel="noopener" class="inline-block bg-orange-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-orange-600 transition">Listen now</a>
-        `;
-      }
-
-      function parseAndRender(xmlText) {
-        const xml = new window.DOMParser().parseFromString(xmlText, "application/xml");
-        const firstItem = xml.querySelector("channel > item");
-        if (!firstItem) { setFallback(); return; }
-        render(firstItem);
-      }
-
-      // Try direct fetch first, then fall back to a permissive proxy if needed
-      fetch(rssUrl)
-        .then(res => {
-          if (!res.ok) throw new Error("RSS fetch failed");
-          return res.text();
-        })
-        .then(parseAndRender)
-        .catch(() => {
-          fetch("https://api.allorigins.win/raw?url=" + encodeURIComponent(rssUrl))
-            .then(res => {
-              if (!res.ok) throw new Error("Proxy fetch failed");
-              return res.text();
-            })
-            .then(parseAndRender)
-            .catch(setFallback);
-        });
-    })();
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
